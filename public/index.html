@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ELS Remote</title>
+    <style>
+      body{font-family:Arial,Helvetica,sans-serif;display:flex;flex-direction:column;align-items:center;padding:12px}
+      .controls{max-width:520px;width:100%}
+      h2{margin:8px 0 6px;font-size:16px}
+      .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+      button{padding:14px;font-size:16px;border-radius:8px;border:1px solid #ccc;background:#fff}
+      .status{margin:10px 0}
+      @media(min-width:420px){.grid{grid-template-columns:repeat(3,1fr)}}
+    </style>
+  </head>
+  <body>
+    <h1>ELS Remote</h1>
+    <div class="status">Status: <span id="status">disconnected</span></div>
+
+    <div class="controls">
+      <section>
+        <h2>Siren</h2>
+        <div class="grid">
+          <button data-action='{"type":"siren","mode":"man"}'>Man</button>
+          <button data-action='{"type":"siren","mode":"auto"}'>Auto</button>
+          <button data-action='{"type":"siren","mode":"wail"}'>WAIL</button>
+          <button data-action='{"type":"siren","mode":"yelp"}'>YELP</button>
+          <button data-action='{"type":"siren","mode":"prty"}'>PRTY</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Lights</h2>
+        <div class="grid">
+          <button data-action='{"type":"lights","zone":"leftAlley","action":"toggle"}'>Left Alley</button>
+          <button data-action='{"type":"lights","zone":"rightAlley","action":"toggle"}'>Right Alley</button>
+          <button data-action='{"type":"lights","zone":"takedown","action":"toggle"}'>Take Down</button>
+          <button data-action='{"type":"lights","zone":"spot","action":"toggle"}'>Spot Light</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Stages</h2>
+        <div class="grid">
+          <button data-action='{"type":"stage","level":0}'>Off</button>
+          <button data-action='{"type":"stage","level":1}'>Stage 1</button>
+          <button data-action='{"type":"stage","level":2}'>Stage 2</button>
+          <button data-action='{"type":"stage","level":3}'>Stage 3</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Arrow / Direction</h2>
+        <div class="grid">
+          <button data-action='{"type":"arrow","pattern":"left"}'>&larr; Left</button>
+          <button data-action='{"type":"arrow","pattern":"both"}'>&larr;&rarr; 2 Arrows</button>
+          <button data-action='{"type":"arrow","pattern":"right"}'>Right &rarr;</button>
+          <button data-action='{"type":"arrow","pattern":"star"}'>&#9733; Star</button>
+        </div>
+      </section>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
