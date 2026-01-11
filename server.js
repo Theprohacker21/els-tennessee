@@ -148,6 +148,11 @@ wss.on('connection', (ws, req) => {
   });
 });
 
+// Fallback route for root
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
 server.listen(STATIC_PORT, () => {
   console.log(`Server listening on http://0.0.0.0:${STATIC_PORT}`);
   console.log(`Forwarding to TCP ${TCP_HOST}:${TCP_PORT}`);
